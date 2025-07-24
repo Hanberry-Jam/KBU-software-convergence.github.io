@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>로그인</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fff0f6;
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('star.jpg');
+    }
+
+    .login-container {
+      width: 600px;
+      padding: 60px;
+      background: #fff8ff;
+      border: 3px solid #ffb6d9;
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(255, 182, 217, 0.3);
+      text-align: center;
+      position: relative;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .header img {
+      height: 70px;
+      width: auto;
+      margin-right: 15px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .header h2 {
+      font-size: 38px;
+      color: #ff69b4;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.2);
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 20px;
+      margin: 15px 0;
+      border: 2px solid #ffcfe7;
+      border-radius: 20px;
+      font-size: 19px;
+      outline: none;
+      background-color: #fffafc;
+      transition: 0.3s ease;
+    }
+
+    .login-container input:focus {
+      border-color: #ff8ac4;
+      box-shadow: 0 0 10px rgba(255, 138, 196, 0.2);
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 20px;
+      background-image: linear-gradient(to right, #ff99cc, #ff66b2);
+      border: none;
+      color: white;
+      font-size: 22px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .login-container button:hover {
+      background-image: linear-gradient(to right, #ff66b2, #ff3399);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 51, 153, 0.5);
+    }
+
+    .find-links {
+      margin-top: 25px;
+      font-size: 16px;
+    }
+
+    .find-links a {
+      color: #ff69b4;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .find-links a:hover {
+      color: #ff3399;
+      text-decoration: underline;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 15px 30px;
+      background-color: #ffe0f0;
+      border: 2px solid #ff69b4;
+      color: #ff69b4;
+      font-size: 17px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 3px 10px rgba(255, 105, 180, 0.2);
+    }
+
+    .back-btn:hover {
+      background-color: #ff69b4;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="header">
+      <img src="핑크냥이.png" alt="핑크냥이 캐릭터">
+      <h2>로그인</h2>
+    </div>
+
+    <input type="text" placeholder="아이디" />
+    <input type="password" placeholder="비밀번호" />
+    <button>로그인</button>
+
+    <div class="find-links">
+      <a href="#">아이디 찾기</a> |
+      <a href="#">비밀번호 찾기</a>
+    </div>
+
+    <a class="back-btn" href="main page.html">← 메인 페이지로</a>
+  </div>
+</body>
+</html>

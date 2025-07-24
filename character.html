@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>전체 캐릭터 소개</title>
+  <style>
+    body {font-family: 'Pretendard', sans-serif; 
+    background:#f7f9fc; 
+    color:#333; 
+    margin:0; 
+    padding:0; 
+    background-image:url(star.jpg);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    }
+    header {background:#A5D8FA; color:white; text-align:center; padding:20px;}
+    h1 {margin:0; font-style: italic;}
+    .container {max-width:1000px; margin:40px auto; padding:20px;}
+    .char-grid {display:flex; flex-wrap:wrap; gap:30px; justify-content:center;}
+    .char-card {background:#fff; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:20px; width:250px; text-align:center;}
+    .char-card img {width:150px; height:auto; margin-bottom:15px;}
+    .char-card h3 {color:#0048ff; margin-bottom:10px;}
+    .char-card p {font-size:0.95rem; color:#555;}
+    .back-btn {display:block; margin:40px auto 0; padding:10px 20px; background:#64D6FF; color:white; border:none; border-radius:5px; text-decoration:none; text-align:center; width:220px;}
+    .back-btn:hover {background:#3aaad4;}
+    .h3 {font-size: medium;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>전체 캐릭터 소개</h1>
+  </header>
+  <div class="container">
+    <div class="char-grid">
+      <div class="char-card">
+        <img src="뽀기.png" alt="뽀기">
+        <h3>뽀기</h3>
+        <p>열정과 도전 정신이 가득한 모험가! 작은 날개로 큰 꿈을 향해 나아갑니다.</p>
+      </div>
+      <div class="char-card">
+        <img src="치즈.png" alt="치즈">
+        <h3>치즈</h3>
+        <p>항상 따뜻하고 다정한 분위기 메이커! 친구들을 아끼는 천사 같은 존재.</p>
+      </div>
+      <div class="char-card">
+        <img src="고등어.png" alt="고등어">
+        <h3>고등어</h3>
+        <p>침착하고 분석적인 전략가! 무뚝뚝하지만 속 깊은 마음을 가진 친구.</p>
+      </div>
+    </div>
+    <!-- 돌아가기 버튼 -->
+    <a href="charactertest.html" class="back-btn">다시 설문조사 하기</a>
+  </div>
+</body>
+</html>

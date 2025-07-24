@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>캐릭터 테스트 & 인형뽑기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family:'Jua',sans-serif;
+      background-color: #f8f8ff;
+      background-image: url('star.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color:#333;
+      line-height:1.6;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    h2 {text-align:center; margin:30px 0; color:#0048ff; text-shadow:2px 2px 4px rgba(255,255,255,0.5);}
+
+    /* 퀴즈 */
+    .quiz-box {
+      background:rgba(255,255,255,0.9); 
+      border:6px solid #64D6FF; 
+      padding:50px; 
+      border-radius:20px;
+      width: 90%; 
+      max-width:1000px; 
+      box-shadow:0 10px 20px rgba(0,0,0,0.15);
+      margin: 0 auto;
+    }
+
+    #quiz-start{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .quiz-box h3 {font-size:1.8rem; margin-bottom:20px; color:#0048ff; text-align:center;}
+    .quiz-box p {margin:15px 0 10px; font-weight:bold; font-size:1.1rem; color:#444;}
+    .quiz-box input[type="radio"] {display:none;}
+    .quiz-box label {
+      display:block; margin:10px 0; padding:12px; background:#fff; border:2px solid #ddd;
+      border-radius:8px; cursor:pointer; transition:all 0.3s;
+    }
+    .quiz-box input[type="radio"]:checked + label {
+      background:#64D6FF; color:white; border-color:#64D6FF; box-shadow:0 4px 8px rgba(0,0,0,0.2);
+    }
+    .quiz-box label:hover {background:#e6f7ff; border-color:#64D6FF; transform:scale(1.02);}
+    .quiz-box button {
+      margin-top:30px; padding:15px 30px; background:#64D6FF; color:white; font-size:1.2rem;
+      font-weight:bold; border:none; border-radius:10px; cursor:pointer; box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+    .quiz-box button:hover {background:#3aaad4;}
+
+    /* 인형뽑기 */
+    .machine-container {display:none; flex-direction:column; align-items:center; margin-top:40px;}
+    .machine {
+      width: 80vw; max-width:600px; height:70vh; max-height:750px;
+      background:#eaf4fe; border:10px solid #64D6FF; border-radius:20px;
+      position:relative; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* 줄 & 집게 */
+    .cord {
+      position:absolute; top:0; left:50%;
+      width:8px; height:80px; background:#444;
+      transform:translateX(-50%);
+      transition:height 0.5s;
+      z-index:2;
+    }
+    .claw-container {
+      position:absolute; top:80px; left:50%;
+      transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center;
+      transition:top 1s, left 1s;
+      z-index:3;
+    }
+    .claw-body {
+      width:60px; height:60px; background:#87CEEB; border:3px solid #4682B4;
+      border-radius:8px; position:relative;
+    }
+    .claw-arm {
+      width:6px; height:40px; background:#4682B4;
+      position:absolute; bottom:-40px; transition:transform 0.5s;
+    }
+    .left-arm {left:5px; transform:rotate(30deg); transform-origin:top;}
+    .right-arm {right:5px; transform:rotate(-30deg); transform-origin:top;}
+    .open .left-arm {transform:rotate(60deg);}
+    .open .right-arm {transform:rotate(-60deg);}
+
+    /* 인형 & 배출구 */
+    .doll {
+      width:100px; height:120px;
+      background-size:contain; background-repeat:no-repeat; background-position:center bottom;
+      position:absolute; bottom:10px; transition:top 1s, left 1s;
+    }
+    .exit {
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      width:150px; height:50px; background:#444; border-radius:5px 5px 0 0;
+      box-shadow:inset 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    /* 결과 */
+    .result-box {display:none; text-align:center; margin:40px auto; padding:30px; background:#e6f7ff; border:6px solid #64D6FF; border-radius:20px;}
+    .result-box img {width:150px; height:auto; margin-bottom:15px; animation:bounce 0.8s ease-out;}
+    .result-box div {font-size:1.5rem; font-weight:bold; color:#0048ff;}
+    .more-btn {margin-top:20px; padding:15px 30px; background:#64D6FF; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:1.1rem; font-weight:bold;}
+    .more-btn:hover {background:#3aaad4;}
+
+    /* 애니메이션 */
+    @keyframes swing {0%{transform:rotate(0deg);}25%{transform:rotate(3deg);}50%{transform:rotate(-3deg);}75%{transform:rotate(2deg);}100%{transform:rotate(0deg);}}
+    @keyframes bounce {0%{transform:translateY(0);}30%{transform:translateY(-20px);}50%{transform:translateY(0);}70%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+    .swing {animation:swing 0.4s ease-in-out infinite;}
+    .bounce {animation:bounce 0.6s ease-out;}
+  </style>
+</head>
+<body>
+
+<h2>🎯 나와 닮은 캐릭터는?</h2>
+<div class="quiz-box">
+  <div id="quiz-start"><button onclick="startQuiz()">시작하기</button></div>
+  <form id="quiz-form" style="display:none;">
+    <div id="question-container"></div>
+    <button type="button" onclick="nextQuestion()">다음</button>
+  </form>
+</div>
+
+<div class="machine-container" id="machineContainer">
+  <h2>당신의 캐릭터가 뽑힙니다!</h2>
+  <div class="machine" id="machine">
+    <div class="cord" id="cord"></div>
+    <div class="claw-container" id="clawContainer">
+      <div class="claw-body">
+        <div class="claw-arm left-arm"></div>
+        <div class="claw-arm right-arm"></div>
+      </div>
+    </div>
+    <div class="doll" id="targetDoll" style="left:40%"></div>
+    <div class="exit"></div>
+  </div>
+</div>
+
+<div class="result-box" id="resultBox"></div>
+
+<audio id="soundDown" src="claw_down.mp3" preload="auto"></audio>
+<audio id="soundUp" src="claw_up.mp3" preload="auto"></audio>
+<audio id="soundPop" src="pop.mp3" preload="auto"></audio>
+
+<script>
+const questions = [
+  {question:"Q1. 나는...",options:[{text:"도전 정신이 강하다",value:"pokki"},{text:"다정하고 사교적이다",value:"cheese"},{text:"분석적이고 조용하다",value:"mackerel"}]},
+  {question:"Q2. 좋아하는 분위기는?",options:[{text:"열정적이고 활기찬 분위기",value:"pokki"},{text:"따뜻하고 밝은 분위기",value:"cheese"},{text:"차분하고 집중할 수 있는 분위기",value:"mackerel"}]},
+  {question:"Q3. 나의 강점은?",options:[{text:"끈기와 열정",value:"pokki"},{text:"배려심과 친화력",value:"cheese"},{text:"논리적인 사고",value:"mackerel"}]},
+  {question:"Q4. 친구들이 보는 나는?",options:[{text:"늘 열심히 하는 사람",value:"pokki"},{text:"모두에게 친절한 사람",value:"cheese"},{text:"조용하지만 든든한 사람",value:"mackerel"}]}
+];
+let currentQuestion = 0; const answers = [];
+
+function startQuiz(){
+  document.getElementById('quiz-start').style.display='none';
+  document.getElementById('quiz-form').style.display='block';
+  showQuestion();
+}
+function showQuestion(){
+  const container=document.getElementById('question-container');
+  const q=questions[currentQuestion];
+  let html=`<p>${q.question}</p>`;
+  q.options.forEach((opt,i)=>{
+    const id=`q${currentQuestion}_${i}`;
+    html+=`<input type="radio" id="${id}" name="q${currentQuestion}" value="${opt.value}" required><label for="${id}">${opt.text}</label>`;
+  });
+  container.innerHTML=html;
+}
+function nextQuestion(){
+  const selected=document.querySelector(`input[name="q${currentQuestion}"]:checked`);
+  if(!selected){alert("선택지를 골라주세요!");return;}
+  answers.push(selected.value); currentQuestion++;
+  if(currentQuestion<questions.length){showQuestion();} else {showResult();}
+}
+
+function showResult(){
+  document.querySelector('.quiz-box').style.display='none';
+  const counts={pokki:0,cheese:0,mackerel:0};
+  answers.forEach(val=>counts[val]++);
+  const result=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0][0];
+  const characterData={
+    pokki:{name:"뽀기",image:"뽀기.png",desc:"🐦 당신은 <strong>뽀기</strong>! 열정 가득한 도전자예요!"},
+    cheese:{name:"치즈",image:"치즈.png",desc:"🧀 당신은 <strong>치즈</strong>! 따뜻하고 사랑스러운 존재네요!"},
+    mackerel:{name:"고등어",image:"고등어.png",desc:"🐟 당신은 <strong>고등어</strong>! 조용하지만 든든한 실력자예요!"}
+  };
+  const char=characterData[result];
+  const doll=document.getElementById('targetDoll');
+  doll.style.backgroundImage=`url('${char.image}')`;
+  document.getElementById('machineContainer').style.display='flex';
+  setTimeout(()=>startClaw(char),1000);
+}
+
+const claw=document.getElementById("clawContainer");
+const cord=document.getElementById("cord");
+const clawBody=claw.querySelector(".claw-body");
+const targetDoll=document.getElementById("targetDoll");
+let heldDoll=null;
+
+function playSound(id){
+  const sound=document.getElementById(id);
+  if(sound && sound.src){ sound.currentTime=0; sound.play().catch(()=>{}); }
+}
+function moveClaw(yPx, duration = 1000) {
+  claw.style.transition=`top ${duration}ms, left ${duration}ms`;
+  cord.style.transition=`height ${duration}ms`;
+  claw.style.top=`${yPx}px`;
+  cord.style.height=`${yPx + 60}px`;
+}
+function startClaw(char){
+  playSound('soundDown'); 
+  moveClaw(500,800);
+  setTimeout(()=>{clawBody.classList.add("open");},800);
+
+  setTimeout(()=>{
+    clawBody.classList.remove("open");
+    heldDoll=targetDoll; heldDoll.style.position="absolute";
+    heldDoll.style.top="80px"; heldDoll.style.left="-20px";
+    claw.appendChild(heldDoll); heldDoll.classList.add("swing");
+  },1400);
+
+  setTimeout(()=>{playSound('soundUp'); moveClaw(80,1000);},2000);
+
+  // 배출구 위치로 이동
+  setTimeout(()=>{
+    const exit=document.querySelector('.exit');
+    const machine=document.getElementById('machine');
+    const exitRect=exit.getBoundingClientRect();
+    const machineRect=machine.getBoundingClientRect();
+    const targetLeft = (exitRect.left + exitRect.width/2) - machineRect.left - (claw.offsetWidth/2);
+    claw.style.left = `${targetLeft}px`;
+  },3000);
+
+  setTimeout(()=>{
+    clawBody.classList.add("open"); heldDoll.classList.remove("swing");
+    const machineHeight=document.getElementById('machine').offsetHeight;
+    heldDoll.style.transition="top 0.6s ease";
+    heldDoll.style.top=`${machineHeight - heldDoll.offsetHeight - 10}px`;
+    heldDoll.classList.add("bounce");
+    playSound('soundPop');
+    heldDoll.addEventListener('transitionend',()=>{
+      heldDoll.remove();
+      showFinalResult(char);
+    },{once:true});
+  },4000);
+}
+
+function showFinalResult(char){
+  const resultBox=document.getElementById('resultBox');
+  resultBox.innerHTML=`
+    <img src="${char.image}" alt="${char.name}">
+    <div>${char.desc}</div>
+    <button class="more-btn" onclick="location.href='characters.html'">더 많은 캐릭터 보러가기</button>
+  `;
+  resultBox.style.display='block';
+}
+</script>
+</body>
+</html>

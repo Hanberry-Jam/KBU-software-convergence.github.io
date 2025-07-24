@@ -1,0 +1,193 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>교육과정 로드맵</title>
+<style>
+  body {
+    font-family: 'Pretendard', sans-serif;
+    background: linear-gradient(to right, #fff0f5, #ffe6f0);
+    margin: 0;
+    padding: 0;
+    color: #a0004f;
+    background-image: url('star.jpg');
+  }
+  h1 {
+    text-align: center;
+    padding: 30px 0;
+    color: #8e0045;
+    font-size: 2.5rem;
+  }
+  .container {
+    display: flex;
+    max-width: 1800px; /* 크기 키움 */
+    margin: 30px auto;
+    gap: 30px;
+  }
+  /* 로드맵 */
+  .roadmap {
+    flex: 3;
+    display: grid;
+    grid-template-columns: 150px repeat(8, 1fr);
+    gap: 10px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  .header {
+    background: #ffe6f0;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 1.1rem;
+  }
+  /* 학년 세로 */
+  .year {
+    writing-mode: vertical-rl;
+    text-align: center;
+    font-weight: bold;
+    background: #ffd1e1;
+    border-radius: 8px;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 박스 */
+  .box {
+    border: 1px solid #a0004f;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    min-height: 70px; /* 박스 키움 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* 학년별 색상 */
+  .y1 { background: #ffe6f0; }
+  .y2 { background: #f0e6ff; }
+  .y3 { background: #e6f7ff; }
+  .y4 { background: #e8ffe6; }
+  .강조 { background: #ffdddd !important; font-weight: bold; border: 2px solid #a0004f; }
+
+  /* 자격증 */
+  .certificates {
+    flex: 1;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  .certificates h2 {
+    text-align: center;
+    color: #8e0045;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+  }
+  .cert-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+  }
+  .cert-list li {
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #fff5fa;
+    border: 1px solid #a0004f;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<h1>KBU 소프트웨어융합과 교육과정 로드맵</h1>
+<div class="container">
+  <!-- 로드맵 -->
+  <div class="roadmap">
+    <div></div>
+    <div class="header">1-1</div>
+    <div class="header">1-2</div>
+    <div class="header">2-1</div>
+    <div class="header">2-2</div>
+    <div class="header">3-1</div>
+    <div class="header">3-2</div>
+    <div class="header">4-1</div>
+    <div class="header">4-2</div>
+
+    <!-- 1학년 -->
+    <div class="year" style="grid-row: span 6;">학년별 과목</div>
+    <div class="box y1">IoT설계</div>
+    <div class="box y1">데이터분석</div>
+    <div class="box y2">AI데이터분석실습</div>
+    <div class="box y2">데이터기반AI</div>
+    <div class="box y3">클라우드빅데이터처리</div>
+    <div class="box y3">인공지능실습</div>
+    <div class="box y4">융합프로젝트실무</div>
+    <div class="box y4">캡스톤디자인심화실무</div>
+
+    <div class="box y1">파이썬프로그래밍1</div>
+    <div class="box y1">파이썬프로그래밍2</div>
+    <div class="box y2">프로그래밍언어활용2</div>
+    <div class="box y2">프로젝트실습1</div>
+    <div class="box y3">IoT응용</div>
+    <div class="box 강조">현장실습</div>
+    <div class="box y4">클라우드서비스개발</div>
+    <div class="box y4">시뮬레이션콘텐츠개발</div>
+
+    <div class="box y1">SQL활용1</div>
+    <div class="box y1">SQL활용2</div>
+    <div class="box y2">UI테스트</div>
+    <div class="box y2">애플리케이션테스트수행</div>
+    <div class="box y3">프로젝트실습2</div>
+    <div class="box 강조">캡스톤디자인</div>
+    <div class="box y4">빅데이터시스템개발</div>
+    <div class="box y4">AI애플리케이션개발</div>
+
+    <div class="box y1">화면구현1</div>
+    <div class="box y1">프로그래밍언어활용1</div>
+    <div class="box y2">서버프로그램구현1</div>
+    <div class="box y2">서버프로그램구현2</div>
+    <div class="box y3">앱프로그래밍2</div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div class="box y1">컴퓨터네트워크</div>
+    <div class="box y1">화면구현2</div>
+    <div class="box y2">시스템보안운영</div>
+    <div class="box y2">앱프로그래밍1</div>
+    <div class="box y3">정보시스템진단</div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div class="box y1">응용SW</div>
+    <div class="box y1">네트워크관리</div>
+    <div></div>
+    <div class="box y2">네트워크보안운영</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <!-- 자격증 -->
+  <div class="certificates">
+    <h2>취득 가능 자격증</h2>
+    <ul class="cert-list">
+      <li>정보처리산업기사 / 기사</li>
+      <li>정보보안산업기사 / 기사</li>
+      <li>SQLD</li>
+      <li>네트워크관리사 2급</li>
+      <li>데이터분석 준전문가(ADsP)</li>
+      <li>클라우드 관련 자격증 (AWS 등)</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

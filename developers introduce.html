@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>개발자 소개 | KBU 소프트웨어융합과 자판기</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      color: #333;
+      background-image: url('star.jpg');
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ad1457;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .dev-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .dev-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .dev-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dev-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d81b60;
+    }
+
+    .dev-role {
+      font-size: 1rem;
+      color: #555;
+      margin: 5px 0 15px;
+    }
+
+    .dev-desc {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    a.back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #ad1457;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👩‍💻 개발자 소개</h1>
+    <p class="subtitle">이 멋진 자판기를 만든 두 명의 개발자를 소개합니다!</p>
+
+    <div class="dev-card">
+      <div class="dev-img">
+        <img src="별.jpg" alt="별 사진" />
+      </div>
+      <div class="dev-name">별</div>
+      <div class="dev-role">기획 & 프론트엔드 개발</div>
+      <div class="dev-desc">
+        전체 UI/UX 기획과 HTML/CSS 구조를 담당했어요. <br />
+        자판기의 핵심 동작 로직을 담당했어요.<br />
+        페이지 간 흐름, 버튼 이벤트 처리, 동전 투입 등 기능을 구현했습니다!
+      </div>
+    </div>
+
+    <div class="dev-card">
+      <div class="dev-img">
+        <img src="숀.jpg" alt="숀 사진" />
+      </div>
+      <div class="dev-name">숀</div>
+      <div class="dev-role">기능 구현 & JavaScript 로직</div>
+      <div class="dev-desc">
+        전체 UI/UX 기획과 HTML/CSS 구조를 담당했어요.<br />
+        인형뽑기의 여러 기능을 구현했습니다!<br />
+        자판기의 컨셉 기획부터 캐릭터 선택 화면까지 직접 디자인하고 구현했습니다!
+      </div>
+    </div>
+
+    <a class="back-link" href="main page.html">← 돌아가기</a>
+  </div>
+
+  <footer>
+    ⓒ 2025 KBU 소프트웨어융합과 자판기. All rights reserved.
+  </footer>
+</body>
+</html>
